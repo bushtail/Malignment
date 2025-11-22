@@ -34,6 +34,6 @@ public class Plugin : BaseUnityPlugin
     {
         public const string PLUGIN_NAME = "Malignment";
         public const string PLUGIN_GUID = "ca.bushtail.malignment";
-        public const string PLUGIN_VERSION = "1.0.0";
+        public const string PLUGIN_VERSION = "1.0.1";
     }
 }

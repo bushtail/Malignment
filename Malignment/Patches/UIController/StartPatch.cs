@@ -61,9 +61,22 @@ public class StartPatch
                 }
             }
         }
+
+        if (__instance.navigationToolbar)
+        {
+            var rectTransform = __instance.navigationToolbar.GetComponent<RectTransform>();
+
+            rectTransform.anchorMin = new Vector2(0f, rectTransform.anchorMin.y);
+            rectTransform.anchorMax = new Vector2(0f, rectTransform.anchorMax.y);
+            
+            rectTransform.pivot = new Vector2(0f, rectTransform.pivot.y);
+            rectTransform.anchoredPosition = new Vector2(0f, rectTransform.anchoredPosition.y);
+        }
         
         Plugin.PluginLogger.LogInfo($"{Plugin.PluginMetadata.PLUGIN_GUID}: Resized {resized} background images.");
     }
+    
+
     
     private static void ResizeHighres(Image image)
     {
