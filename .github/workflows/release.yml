@@ -38,6 +38,10 @@ jobs:
         run: |
           choco install netfx-4.8-devpack -y
           
+      - name: Restore
+        run: |
+          dotnet restore
+          
       - name: Build
         run: |
           msbuild /t:Rebuild /p:Configuration=Release
