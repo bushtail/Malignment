@@ -18,9 +18,9 @@ jobs:
         run: |
           FILE=$(grep -rl "public const string PLUGIN_NAME" . || true)
 
-          NAME=$(grep -oP 'PLUGIN_NAME\s*=\s*"\K[^"]+' "$FILE")
-          GUID=$(grep -oP 'PLUGIN_GUID\s*=\s*"\K[^"]+' "$FILE")
-          VERSION=$(grep -oP 'PLUGIN_VERSION\s*=\s*"\K[^"]+' "$FILE")
+          NAME=$(sed -n 's/.*PLUGIN_NAME *= *"\([^"]*\)".*/\1/p' "$FILE")
+          GUID=$(sed -n 's/.*PLUGIN_GUID *= *"\([^"]*\)".*/\1/p' "$FILE")
+          VERSION=$(sed -n 's/.*PLUGIN_VERSION *= *"\([^"]*\)".*/\1/p' "$FILE")
 
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "guid=$GUID" >> $GITHUB_OUTPUT
