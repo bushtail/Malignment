@@ -16,7 +16,7 @@ jobs:
         id: meta
         shell: bash
         run: |
-          FILE=$(grep -rl "public const string PLUGIN_NAME" *.cs -n || true)
+          FILE=$(grep -rl --include="*.cs" "public const string PLUGIN_NAME" . | head -n 1)
 
           NAME=$(sed -n 's/.*PLUGIN_NAME *= *"\([^"]*\)".*/\1/p' "$FILE")
           GUID=$(sed -n 's/.*PLUGIN_GUID *= *"\([^"]*\)".*/\1/p' "$FILE")
