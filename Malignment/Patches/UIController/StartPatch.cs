@@ -61,6 +61,33 @@ public class StartPatch
                 }
             }
         }
+        
+        if (__instance.canvasMaster)
+        {
+            var screenBlock = __instance.canvasMaster.transform.Find("screenblock");
+            if (screenBlock)
+            {
+                var img = screenBlock.GetComponent<Image>();
+                if (img)
+                {
+                    var imageTransform = img.GetComponent<RectTransform>();
+                    imageTransform.localPosition = new Vector3(0f, 0f, 1f);
+                    imageTransform.localScale = new Vector3(Screen.width, Screen.height, 1f);
+                }
+            }
+            
+            var fadePanel = __instance.canvasMaster.transform.Find("fadepanel");
+            if (fadePanel)
+            {
+                var img = fadePanel.GetComponent<Image>();
+                if (img)
+                {
+                    var imageTransform = img.GetComponent<RectTransform>();
+                    imageTransform.localPosition = new Vector3(0f, 0f, 1f);
+                    imageTransform.localScale = new Vector3(Screen.width, Screen.height, 1f);
+                }
+            }
+        }
 
         if (__instance.navigationToolbar)
         {
@@ -72,6 +99,8 @@ public class StartPatch
             rectTransform.pivot = new Vector2(0f, rectTransform.pivot.y);
             rectTransform.anchoredPosition = new Vector2(0f, rectTransform.anchoredPosition.y);
         }
+
+
         
         Plugin.PluginLogger.LogInfo($"{Plugin.PluginMetadata.PLUGIN_GUID}: Resized {resized} background images.");
     }
